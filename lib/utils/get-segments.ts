@@ -1,5 +1,5 @@
 import type { DiffResult } from 'json-diff-kit';
-import type { HideUnchangedLinesOptions } from 'json-diff-kit/typings/viewer';
+import type { HideUnchangedLinesOptions } from '../types';
 
 const defaultOptions: HideUnchangedLinesOptions = {
   threshold: 8,

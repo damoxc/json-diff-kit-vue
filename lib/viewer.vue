@@ -3,7 +3,7 @@ import { provide, ref, computed } from 'vue';
 
 import Segment from './segment.vue';
 import getSegments from './utils/get-segments';
-import { ViewerProps } from './types';
+import type { ViewerProps } from './types';
 
 const props = withDefaults(defineProps<ViewerProps>(), {
   texts: () => ({
