@@ -3,7 +3,7 @@ import { computed, toRefs } from 'vue';
 import type { DiffResult } from 'json-diff-kit';
 
 import { isExpandLine } from './utils/segment-util';
-import { HiddenUnchangedLinesInfo, SegmentItem } from './utils/get-segments';
+import type { HiddenUnchangedLinesInfo, SegmentItem } from './utils/get-segments';
 import ExpandLine from './expand-line.vue';
 import Line from './line.vue';
 

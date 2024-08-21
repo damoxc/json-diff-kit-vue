@@ -2,7 +2,7 @@
 import { computed, inject, toRefs } from 'vue';
 
 import type { ViewerProps } from './types';
-import { HiddenUnchangedLinesInfo } from './utils/get-segments';
+import type { HiddenUnchangedLinesInfo } from './utils/get-segments';
 
 const DEFAULT_EXPAND_MORE_LINES_LIMIT = 20;
 
