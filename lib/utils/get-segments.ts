@@ -24,15 +24,15 @@ const getSegments = (l: DiffResult[], r: DiffResult[], options: HideUnchangedLin
 
   const segments: SegmentItem[] = [];
   for (let i = 0; i < l.length; i++) {
-    if (l[i].type === 'equal' && r[i].type === 'equal') {
-      if (segments.length && segments[segments.length - 1].isEqual) {
-        segments[segments.length - 1].end++;
+    if (l[i]!.type === 'equal' && r[i]!.type === 'equal') {
+      if (segments.length && segments[segments.length - 1]!.isEqual) {
+        segments[segments.length - 1]!.end++;
       } else {
         segments.push({ start: i, end: i + 1, isEqual: true });
       }
     } else {
-      if (segments.length && !segments[segments.length - 1].isEqual) {
-        segments[segments.length - 1].end++;
+      if (segments.length && !segments[segments.length - 1]!.isEqual) {
+        segments[segments.length - 1]!.end++;
       } else {
         segments.push({ start: i, end: i + 1, isEqual: false });
       }
@@ -51,7 +51,7 @@ const getSegments = (l: DiffResult[], r: DiffResult[], options: HideUnchangedLin
 
   const result: Array<SegmentItem | HiddenUnchangedLinesInfo> = [];
   for (let i = 0; i < segments.length; i++) {
-    const segment = segments[i];
+    const segment = segments[i]!;
     if (
       !segment.isEqual ||
       segment.end - segment.start < threshold ||

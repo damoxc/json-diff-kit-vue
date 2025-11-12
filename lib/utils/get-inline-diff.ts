@@ -54,21 +54,21 @@ const getInlineDiff = (l: string, r: string, options: InlineDiffOptions): [
 
     for (const [sl, sr, length] of iter) {
       if (sl > lastL) {
-        resultL.push({ type: 'remove', start: indicesL[lastL], end: indicesL[sl] });
+        resultL.push({ type: 'remove', start: indicesL[lastL]!, end: indicesL[sl]! });
       }
       if (sr > lastR) {
-        resultR.push({ type: 'add', start: indicesR[lastR], end: indicesR[sr] });
+        resultR.push({ type: 'add', start: indicesR[lastR]!, end: indicesR[sr]! });
       }
       lastL = sl + length;
       lastR = sr + length;
-      resultL.push({ start: indicesL[sl], end: indicesL[lastL] });
-      resultR.push({ start: indicesR[sr], end: indicesR[lastR] });
+      resultL.push({ start: indicesL[sl]!, end: indicesL[lastL]! });
+      resultR.push({ start: indicesR[sr]!, end: indicesR[lastR]! });
     }
     if (l.length > lastL) {
-      resultL.push({ type: 'remove', start: indicesL[lastL], end: l.length });
+      resultL.push({ type: 'remove', start: indicesL[lastL]!, end: l.length });
     }
     if (r.length > lastR) {
-      resultR.push({ type: 'add', start: indicesR[lastR], end: r.length });
+      resultR.push({ type: 'add', start: indicesR[lastR]!, end: r.length });
     }
     resultL = filterEmptyParts(resultL);
     resultR = filterEmptyParts(resultR);
