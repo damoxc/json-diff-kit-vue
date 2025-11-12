@@ -12,8 +12,8 @@ const props = withDefaults(defineProps<ViewerProps>(), {
 });
 provide('viewerProps', props);
 
-const linesLeft = computed(() => props.diff[0]);
-const linesRight = computed(() => props.diff[1]);
+const linesLeft = computed(() => props.diff[0]!);
+const linesRight = computed(() => props.diff[1]!);
 const jsonsAreEqual = computed(() => (
   linesLeft.value.length === linesRight.value.length &&
   linesLeft.value.every(item => item.type === 'equal') &&
@@ -25,18 +25,18 @@ const hideUnchangedLines = computed(() => props.hideUnchangedLines ?? false);
 const segments = ref(getSegments(linesLeft.value, linesRight.value, hideUnchangedLines.value, jsonsAreEqual.value));
 
 const onExpandBefore = (segmentIndex: number, lines: number) => {
-  const { start, end } = segments.value[segmentIndex];
-  segments.value[segmentIndex].end = Math.max(end - lines, start);
+  const { start, end } = segments.value[segmentIndex]!;
+  segments.value[segmentIndex]!.end = Math.max(end - lines, start);
   if (segmentIndex + 1 < segments.value.length - 1) {
-    segments.value[segmentIndex + 1].start = Math.max(end - lines, start);
+    segments.value[segmentIndex + 1]!.start = Math.max(end - lines, start);
   }
 };
 
 const onExpandAfter = (segmentIndex: number, lines: number) => {
-  const { start, end } = segments.value[segmentIndex];
-  segments.value[segmentIndex].start = Math.min(start + lines, end);
+  const { start, end } = segments.value[segmentIndex]!;
+  segments.value[segmentIndex]!.start = Math.min(start + lines, end);
   if (segmentIndex > 1) {
-    segments.value[segmentIndex - 1].end = Math.min(start + lines, end);
+    segments.value[segmentIndex - 1]!.end = Math.min(start + lines, end);
   }
 };
 
