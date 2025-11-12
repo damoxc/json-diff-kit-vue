@@ -41,16 +41,16 @@ const onExpandAfter = (segmentIndex: number, lines: number) => {
 };
 
 const onExpandAll = (segmentIndex: number) => {
-  const { start, end } = segments.value[segmentIndex];
+  const { start, end } = segments.value[segmentIndex]!;
   segments.value[segmentIndex] = {
     start,
     end: start,
     isEqual: true,
   };
   if (segmentIndex + 1 < segments.value.length - 1) {
-    segments.value[segmentIndex + 1].start = start;
+    segments.value[segmentIndex + 1]!.start = start;
   } else {
-    segments.value[segmentIndex - 1].end = end;
+    segments.value[segmentIndex - 1]!.end = end;
   }
 };
 </script>

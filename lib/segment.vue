@@ -42,8 +42,8 @@ const end = computed(() => Math.min(segment.value.end, renderEnd.value));
     v-else-if="!isExpandLine(segment)"
     v-for="(_, index) in end - start"
     :key="`line-${start + index}`"
-    :l="linesLeft[start + index]"
-    :r="linesRight[start + index]"
+    :l="linesLeft[start + index]!"
+    :r="linesRight[start + index]!"
   />
   <ExpandLine
     v-else
